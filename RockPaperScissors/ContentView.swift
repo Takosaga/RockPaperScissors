@@ -9,8 +9,27 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var choices = ["🗿", "📄", "✂️"]
+    
+    @State private var showingScore = false
+    @State private var score = 0
+    @State private var cpuChoice = Int.random(in: 0...2)
+    
     var body: some View {
-        Text("Hello, World!")
+        VStack(spacing: 30){
+            VStack{
+                Text("Choose")
+                    .font(.largeTitle)
+                
+                Text("")
+                
+                Text("🗿(Rock) 📄(Paper) ✂️(Scissors)")
+                .foregroundColor(.black)
+                
+                
+            }
+            Spacer()
+        }
     }
 }
 
