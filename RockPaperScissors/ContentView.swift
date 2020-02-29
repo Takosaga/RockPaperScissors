@@ -21,14 +21,17 @@ struct ContentView: View {
             LinearGradient(gradient: Gradient(colors: [.blue, .gray]), startPoint: .top, endPoint: .bottom)
             .edgesIgnoringSafeArea(.all)
         
-            VStack(spacing: 30){
+            VStack(spacing: 125){
                 VStack{
+                    Text("")
+                    
                     Text("Choose")
                         .font(.largeTitle)
+                        .foregroundColor(.black)
                     
                     Text("")
                     
-                    Text("🗿(Rock) 📄(Paper) ✂️(Scissors)")
+                    Text(" 🗿(Rock)         📄(Paper)      ✂️(Scissors) ")
                     .foregroundColor(.black)
                     
                     
@@ -44,7 +47,7 @@ struct ContentView: View {
                                 
                                         .clipShape(Capsule())
                                     .overlay(Capsule().stroke(Color.black,lineWidth:  1))
-                                    .shadow(color: .black, radius: 2)
+                                    .shadow(color: .white, radius: 1)
                             }
                         }
                         
@@ -65,8 +68,17 @@ struct ContentView: View {
     
     func playerChoice( _ number: Int){
         
-        if choices[number] == choices[cpuChoice] {
-            results = "You both choose \(choices[number]) "
+        if number == cpuChoice {
+            results = "Tie! You both choose \(choices[number]) "
+        } else if number == 0 && cpuChoice == 1 {
+            results = "Lose! \(choices[cpuChoice]) beats \(choices[number])"
+        } else if number == 1 && cpuChoice == 2 {
+            results = "Lose! \(choices[cpuChoice]) beats \(choices[number])"
+        } else if number == 2 && cpuChoice == 0 {
+            results = "Lose! \(choices[cpuChoice]) beats \(choices[number])"
+        } else {
+            results = "Win! \(choices[number]) beats \(choices[cpuChoice])"
+            score = score + 1
         }
         
         showingScore = true
